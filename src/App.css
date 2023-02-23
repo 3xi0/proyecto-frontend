@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#photo {
+    aspect-ratio: 85/100;
+    width: 410px; 
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#aboutme-button {
+    background: linear-gradient(75deg, rgb(129 140 248), rgb(14 165 233));
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#aboutme-button:hover {
+    background: linear-gradient(75deg, rgb(107, 117, 206), rgb(12, 122, 173));
 }
-
-.App-link {
-  color: #61dafb;
+html {
+    @apply scroll-smooth;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#content section {
+    @apply py-6;
+}
+#github:hover {
+    color:rgb(64, 120, 192);
+}
+#linkedin:hover {
+    color:rgb(14, 118, 168);
+}
+@layer components {
+    .nav-link {
+        @apply block w-full py-2 md:w-auto md:py-0;
+    }
+    .section-title {
+        @apply font-semibold text-3xl uppercase tracking-wider text-center md:text-left mb-3;
+    }
+    .contact-icon {
+        @apply no-underline text-neutral-500 transition-all ease-in-out duration-300;
+    }
+    .experience-entry {
+        @apply px-6 pb-2 pt-8 relative border-l-2 border-solid border-sky-500;
+    }
+    .experience-entry::before {
+        @apply absolute left-5 top-3 block font-medium text-neutral-400 text-sm content-[attr(date-is)];
+    }
+    .experience-entry::after {
+        @apply block absolute top-4 rounded-full content-[''] bg-white border-2 border-solid border-sky-500;
+        width: 14px;
+        height: 14px;
+        left: -8px;
+    }
+    .experience-entry:last-child {
+        border-image: 
+            linear-gradient(to bottom, rgb(14, 165, 233) 20%, rgba(14, 165, 233, 0) 80%)
+        1 stretch;
+    }
+    .experience-entry-title {
+        @apply text-xl md:text-2xl font-semibold text-neutral-800 tracking-wide mb-1;
+    }
+    .experience-entry p {
+        @apply text-base font-light text-neutral-500;
+    }
 }
